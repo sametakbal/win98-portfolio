@@ -26,7 +26,12 @@ const Footer: Component<FooterProps> = (props) => {
     return (
         <footer class="footer">
             <button class="start-button">
-                <span class="start-icon">🪟</span>
+                <svg class="start-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="6" height="6" fill="#FF0000" />
+                    <rect x="9" y="1" width="6" height="6" fill="#00FF00" />
+                    <rect x="1" y="9" width="6" height="6" fill="#0000FF" />
+                    <rect x="9" y="9" width="6" height="6" fill="#FFFF00" />
+                </svg>
                 <span>Başlat</span>
             </button>
             <div class="taskbar-items">
