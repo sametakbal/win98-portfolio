@@ -1,0 +1,164 @@
+.projects {
+    padding: 16px;
+    padding-bottom: 56px;
+    background: var(--win98-desktop);
+}
+
+.projects .window {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.toolbar {
+    background: var(--win98-gray);
+    padding: 2px 4px;
+    border-bottom: 2px solid;
+    border-color: var(--win98-white) var(--win98-dark-gray) var(--win98-dark-gray) var(--win98-white);
+    display: flex;
+    gap: 0;
+    margin: 0;
+}
+
+.toolbar span {
+    border: none;
+    background: transparent;
+    padding: 4px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    color: var(--win98-black);
+}
+
+.toolbar span:hover {
+    background: var(--win98-highlight);
+    color: white;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.project-item {
+    display: flex;
+    gap: 8px;
+    padding: 6px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    align-items: flex-start;
+}
+
+.project-item:hover {
+    background: var(--win98-highlight);
+    color: white;
+}
+
+.project-item:hover .project-title,
+.project-item:hover .project-description,
+.project-item:hover .project-year,
+.project-item:hover .tag {
+    color: white;
+}
+
+.project-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.project-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.project-title {
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--win98-black);
+}
+
+.project-year {
+    font-size: 10px;
+    color: var(--win98-dark-gray);
+}
+
+.project-description {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    color: var(--win98-black);
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.tag {
+    font-size: 10px;
+    color: var(--win98-black);
+    padding: 1px 4px;
+    background: var(--win98-gray);
+    border: 1px solid var(--win98-dark-gray);
+}
+
+@media (max-width: 768px) {
+    .projects {
+        padding: 8px;
+        padding-bottom: 40px;
+    }
+
+    .toolbar {
+        padding: 2px;
+    }
+
+    .toolbar span {
+        padding: 3px 6px;
+        font-size: 10px;
+    }
+
+    .project-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 4px;
+    }
+
+    .project-icon {
+        font-size: 24px;
+    }
+
+    .project-title {
+        font-size: 10px;
+    }
+
+    .project-description {
+        font-size: 10px;
+    }
+
+    .tag {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects {
+        padding: 4px;
+        padding-bottom: 32px;
+    }
+
+    .toolbar span {
+        padding: 2px 4px;
+        font-size: 9px;
+    }
+
+    .project-icon {
+        font-size: 20px;
+    }
+}

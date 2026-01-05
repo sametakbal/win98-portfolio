@@ -1,0 +1,162 @@
+.footer {
+    background: var(--win98-gray);
+    border-top: 2px solid;
+    border-color: var(--win98-white) var(--win98-dark-gray);
+    padding: 2px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.start-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    border: 2px solid;
+    border-color: var(--win98-white) var(--win98-dark-gray) var(--win98-dark-gray) var(--win98-white);
+    background: var(--win98-gray);
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+    height: 26px;
+}
+
+.start-button:active {
+    border-color: var(--win98-dark-gray) var(--win98-white) var(--win98-white) var(--win98-dark-gray);
+    padding: 3px 5px 1px 7px;
+}
+
+.start-icon {
+    font-size: 16px;
+}
+
+.taskbar-items {
+    display: flex;
+    gap: 2px;
+    flex: 1;
+    margin: 0 4px;
+}
+
+.taskbar-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    border: 2px solid;
+    border-color: var(--win98-white) var(--win98-dark-gray) var(--win98-dark-gray) var(--win98-white);
+    background: var(--win98-gray);
+    font-size: 11px;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 26px;
+}
+
+.taskbar-item.active {
+    border-color: var(--win98-dark-gray) var(--win98-white) var(--win98-white) var(--win98-dark-gray);
+}
+
+.system-tray {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 6px;
+    border: 1px solid;
+    border-color: var(--win98-dark-gray) var(--win98-white) var(--win98-white) var(--win98-dark-gray);
+    height: 22px;
+    background: var(--win98-gray);
+}
+
+.tray-icon {
+    font-size: 14px;
+}
+
+.clock {
+    font-size: 11px;
+    padding: 0 4px;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        height: 28px;
+    }
+
+    .start-button {
+        padding: 2px 4px;
+        font-size: 10px;
+        height: 24px;
+        gap: 2px;
+    }
+
+    .start-icon {
+        font-size: 14px;
+    }
+
+    .taskbar-items {
+        margin: 0 2px;
+    }
+
+    .taskbar-item {
+        font-size: 10px;
+        padding: 2px 4px;
+        max-width: 120px;
+        height: 24px;
+    }
+
+    .system-tray {
+        gap: 4px;
+        padding: 0 4px;
+        height: 20px;
+    }
+
+    .tray-icon {
+        font-size: 12px;
+    }
+
+    .clock {
+        font-size: 10px;
+        padding: 0 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        height: 26px;
+    }
+
+    .start-button {
+        padding: 1px 3px;
+        font-size: 9px;
+        height: 22px;
+    }
+
+    .start-button span:last-child {
+        display: none;
+    }
+
+    .start-icon {
+        font-size: 16px;
+    }
+
+    .system-tray {
+        gap: 2px;
+        padding: 0 3px;
+    }
+
+    .tray-icon {
+        display: none;
+    }
+
+    .clock {
+        font-size: 9px;
+    }
+}

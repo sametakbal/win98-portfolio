@@ -1,0 +1,221 @@
+.hero {
+    min-height: calc(100vh - 40px);
+    padding: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.desktop-icon:hover {
+    background: rgba(0, 0, 128, 0.3);
+    outline: 1px dotted white;
+}
+
+.icon-image {
+    font-size: 32px;
+    filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
+}
+
+.icon-label {
+    color: white;
+    font-size: 11px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    word-wrap: break-word;
+    max-width: 70px;
+}
+
+.about-window {
+    max-width: 500px;
+    margin: 20px;
+    z-index: 10;
+}
+
+.projects-window {
+    max-width: 700px;
+    margin: 20px;
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.projects-window .window-body {
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.articles-window {
+    max-width: 700px;
+    margin: 20px;
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.articles-window .window-body {
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.window-body h2 {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.window-body p {
+    margin: 8px 0;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.window-body hr {
+    border: none;
+    border-top: 1px solid var(--win98-dark-gray);
+    border-bottom: 1px solid var(--win98-white);
+    margin: 12px 0;
+}
+
+.hero-social {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    border: 2px solid;
+    border-color: var(--win98-white) var(--win98-dark-gray) var(--win98-dark-gray) var(--win98-white);
+    background: var(--win98-gray);
+    padding: 4px 8px;
+    font-size: 11px;
+    color: var(--win98-black);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.social-link svg {
+    width: 14px;
+    height: 14px;
+}
+
+.social-link:hover {
+    background: var(--win98-light-gray);
+    color: var(--win98-black);
+}
+
+.social-link:active {
+    border-color: var(--win98-dark-gray) var(--win98-white) var(--win98-white) var(--win98-dark-gray);
+    padding: 5px 7px 3px 9px;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 8px;
+        min-height: calc(100vh - 36px);
+    }
+
+    .hero-content {
+        grid-template-columns: repeat(auto-fill, 60px);
+        gap: 12px;
+    }
+
+    .icon-image {
+        font-size: 28px;
+    }
+
+    .icon-label {
+        font-size: 10px;
+        max-width: 60px;
+    }
+
+    .about-window,
+    .projects-window,
+    .articles-window {
+        margin: 8px;
+        max-width: calc(100vw - 16px);
+        max-height: calc(100vh - 80px);
+    }
+
+    .projects-window .window-body,
+    .articles-window .window-body {
+        max-height: calc(100vh - 160px);
+    }
+
+    .window-body h2 {
+        font-size: 13px;
+    }
+
+    .hero-social {
+        gap: 6px;
+    }
+
+    .social-link {
+        padding: 3px 6px;
+        font-size: 10px;
+    }
+
+    .social-link svg {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 4px;
+    }
+
+    .hero-content {
+        grid-template-columns: repeat(auto-fill, 55px);
+        gap: 8px;
+    }
+
+    .icon-image {
+        font-size: 24px;
+    }
+
+    .icon-label {
+        font-size: 9px;
+        max-width: 55px;
+    }
+
+    .about-window,
+    .projects-window,
+    .articles-window {
+        margin: 4px;
+        max-width: calc(100vw - 8px);
+    }
+
+    .window-body h2 {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .window-body p {
+        font-size: 10px;
+    }
+}

@@ -1,0 +1,146 @@
+.articles {
+    padding: 16px;
+    padding-bottom: 56px;
+    background: var(--win98-desktop);
+}
+
+.articles .window {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.article-item {
+    display: flex;
+    gap: 8px;
+    padding: 6px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: var(--win98-black);
+    align-items: center;
+}
+
+.article-item:hover {
+    background: var(--win98-highlight);
+    color: white;
+}
+
+.article-item:hover .article-title,
+.article-item:hover .article-excerpt,
+.article-item:hover .article-meta,
+.article-item:hover .article-read-time {
+    color: white;
+}
+
+.article-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.article-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.article-meta {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+    font-size: 10px;
+    color: var(--win98-dark-gray);
+}
+
+.article-platform {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.article-title {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: var(--win98-black);
+}
+
+.article-excerpt {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    color: var(--win98-black);
+}
+
+.article-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.article-read-time {
+    font-size: 10px;
+    color: var(--win98-dark-gray);
+}
+
+.article-arrow {
+    width: 16px;
+    height: 16px;
+    color: var(--win98-dark-gray);
+}
+
+.article-item:hover .article-arrow {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .articles {
+        padding: 8px;
+        padding-bottom: 40px;
+    }
+
+    .article-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 4px;
+    }
+
+    .article-icon {
+        font-size: 20px;
+    }
+
+    .article-meta {
+        font-size: 9px;
+    }
+
+    .article-title {
+        font-size: 10px;
+    }
+
+    .article-excerpt {
+        font-size: 10px;
+    }
+
+    .article-read-time {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    .articles {
+        padding: 4px;
+        padding-bottom: 32px;
+    }
+
+    .article-icon {
+        font-size: 18px;
+    }
+
+    .article-meta {
+        font-size: 8px;
+        gap: 4px;
+    }
+}
