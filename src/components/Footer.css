@@ -15,6 +15,10 @@
     box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
+.start-section {
+    position: relative;
+}
+
 .start-button {
     display: flex;
     align-items: center;
@@ -40,6 +44,92 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.start-menu {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    background: var(--win98-gray);
+    border: 2px solid;
+    border-color: var(--win98-white) var(--win98-dark-gray) var(--win98-dark-gray) var(--win98-white);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    min-width: 200px;
+    z-index: 1001;
+}
+
+.start-menu-sidebar {
+    background: linear-gradient(to bottom, #000080, #1084d0);
+    padding: 4px;
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: flex-end;
+    min-width: 24px;
+}
+
+.sidebar-text {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.start-menu-content {
+    flex: 1;
+    padding: 2px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    position: relative;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background: var(--win98-highlight);
+    color: white;
+}
+
+.menu-item.active {
+    background: var(--win98-highlight);
+    color: white;
+}
+
+.menu-arrow {
+    font-size: 8px;
+    margin-left: auto;
+}
+
+.language-menu {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -2px;
+    background: var(--win98-gray);
+    border: 2px solid;
+    border-color: var(--win98-white) var(--win98-dark-gray) var(--win98-dark-gray) var(--win98-white);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    min-width: 150px;
+    padding: 2px;
+}
+
+.language-menu:hover .submenu {
+    display: block;
+}
+
+.submenu .menu-item {
+    padding: 4px 8px;
 }
 
 .taskbar-items {

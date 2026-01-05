@@ -1,6 +1,7 @@
 import { Show, For, createSignal } from 'solid-js'
 import type { Component, Accessor, Setter } from 'solid-js'
 import type { WindowType } from '../App'
+import { useLanguage } from '../contexts/LanguageContext'
 import './Hero.css'
 import './Projects.css'
 import './Articles.css'
@@ -39,6 +40,7 @@ const Hero: Component<HeroProps> = (props) => {
     const [articlesPosition, setArticlesPosition] = createSignal<WindowPosition>({ x: 20, y: 20 })
     const [dragging, setDragging] = createSignal<WindowType>(null)
     const [dragStart, setDragStart] = createSignal<{ x: number; y: number } | null>(null)
+    const { t } = useLanguage()
 
     const projects: Project[] = [
         {
@@ -154,15 +156,15 @@ const Hero: Component<HeroProps> = (props) => {
             <div class="hero-content">
                 <div class="desktop-icon" onClick={() => openWindowHandler('about')} onDblClick={() => openWindowHandler('about')}>
                     <div class="icon-image">💻</div>
-                    <div class="icon-label">My Computer</div>
+                    <div class="icon-label">{t('about')}</div>
                 </div>
                 <div class="desktop-icon" onClick={() => openWindowHandler('projects')} onDblClick={() => openWindowHandler('projects')}>
                     <div class="icon-image">📁</div>
-                    <div class="icon-label">Projects</div>
+                    <div class="icon-label">{t('projects')}</div>
                 </div>
                 <div class="desktop-icon" onClick={() => openWindowHandler('articles')} onDblClick={() => openWindowHandler('articles')}>
                     <div class="icon-image">📝</div>
-                    <div class="icon-label">Articles</div>
+                    <div class="icon-label">{t('articles')}</div>
                 </div>
                 <div class="desktop-icon" onClick={() => window.open('https://github.com/sametakbal', '_blank')} onDblClick={() => window.open('https://github.com/sametakbal', '_blank')}>
                     <div class="icon-image">🌐</div>
@@ -172,7 +174,7 @@ const Hero: Component<HeroProps> = (props) => {
             <Show when={props.openWindow() === 'about'}>
                 <div class="window about-window" style={{ position: 'absolute', left: `${aboutPosition().x}px`, top: `${aboutPosition().y}px` }}>
                     <div class="window-titlebar" onMouseDown={(e) => startDrag('about', e)} style={{ cursor: 'move' }}>
-                        <span>📋 About - Samet Akbal</span>
+                        <span>{t('aboutTitle')}</span>
                         <div class="titlebar-buttons">
                             <button class="titlebar-button">_</button>
                             <button class="titlebar-button">□</button>
@@ -182,7 +184,7 @@ const Hero: Component<HeroProps> = (props) => {
                     <div class="window-body">
                         <h2>Samet Akbal</h2>
                         <p><strong>Title:</strong> Software Engineer & Content Creator</p>
-                        <p><strong>Experience:</strong> 4+ years</p>
+                        <p><strong>Experience:</strong> 5+ years</p>
                         <p><strong>Specialization:</strong> Java, Spring Boot, Microservices, gRPC</p>
                         <hr />
                         <p>Building scalable backend systems and sharing knowledge through educational content.</p>
@@ -219,7 +221,7 @@ const Hero: Component<HeroProps> = (props) => {
             <Show when={props.openWindow() === 'projects'}>
                 <div class="window projects-window" style={{ position: 'absolute', left: `${projectsPosition().x}px`, top: `${projectsPosition().y}px` }}>
                     <div class="window-titlebar" onMouseDown={(e) => startDrag('projects', e)} style={{ cursor: 'move' }}>
-                        <span>📁 My Projects - Windows Explorer</span>
+                        <span>{t('projectsTitle')}</span>
                         <div class="titlebar-buttons">
                             <button class="titlebar-button">_</button>
                             <button class="titlebar-button">□</button>
@@ -260,7 +262,7 @@ const Hero: Component<HeroProps> = (props) => {
             <Show when={props.openWindow() === 'articles'}>
                 <div class="window articles-window" style={{ position: 'absolute', left: `${articlesPosition().x}px`, top: `${articlesPosition().y}px` }}>
                     <div class="window-titlebar" onMouseDown={(e) => startDrag('articles', e)} style={{ cursor: 'move' }}>
-                        <span>📝 Yazılar & Videolar - Internet Explorer</span>
+                        <span>{t('articlesTitle')}</span>
                         <div class="titlebar-buttons">
                             <button class="titlebar-button">_</button>
                             <button class="titlebar-button">□</button>

@@ -24,7 +24,7 @@
 
 body {
   margin: 0;
-  background: var(--win98-desktop);
+  background: #008080 url('/windows98wallpaper.jpg') center center / cover no-repeat;
   color: var(--win98-black);
   min-height: 100vh;
   line-height: 1.4;
