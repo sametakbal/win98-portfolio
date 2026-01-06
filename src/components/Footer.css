@@ -148,7 +148,7 @@
     border-color: var(--win98-white) var(--win98-dark-gray) var(--win98-dark-gray) var(--win98-white);
     background: var(--win98-gray);
     font-size: 11px;
-    max-width: 160px;
+    max-width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
