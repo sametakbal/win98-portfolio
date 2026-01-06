@@ -17,24 +17,28 @@ const translations = {
         about: 'Hakkımda',
         projects: 'Projeler',
         articles: 'Yazılar & Videolar',
+        minesweeper: 'Mayın Tarlası',
         language: 'Dil',
         turkish: 'Türkçe',
         english: 'English',
         aboutTitle: '📋 Hakkımda - Samet Akbal',
         projectsTitle: '📁 Projelerim',
         articlesTitle: '📝 Yazılar & Videolar',
+        minesweeperTitle: '💣 Mayın Tarlası',
     },
     en: {
         start: 'Start',
         about: 'About',
         projects: 'Projects',
         articles: 'Articles & Videos',
+        minesweeper: 'Minesweeper',
         language: 'Language',
         turkish: 'Türkçe',
         english: 'English',
         aboutTitle: '📋 About - Samet Akbal',
         projectsTitle: '📁 My Projects',
         articlesTitle: '📝 Articles & Videos',
+        minesweeperTitle: '💣 Minesweeper',
     }
 }
 

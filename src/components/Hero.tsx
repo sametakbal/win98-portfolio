@@ -2,6 +2,7 @@ import { Show, For, createSignal } from 'solid-js'
 import type { Component, Accessor, Setter } from 'solid-js'
 import type { WindowType } from '../App'
 import { useLanguage } from '../contexts/LanguageContext'
+import Minesweeper from './Minesweeper'
 import './Hero.css'
 import './Projects.css'
 import './Articles.css'
@@ -38,6 +39,7 @@ const Hero: Component<HeroProps> = (props) => {
     const [aboutPosition, setAboutPosition] = createSignal<WindowPosition>({ x: 20, y: 20 })
     const [projectsPosition, setProjectsPosition] = createSignal<WindowPosition>({ x: 20, y: 20 })
     const [articlesPosition, setArticlesPosition] = createSignal<WindowPosition>({ x: 20, y: 20 })
+    const [minesweeperPosition, setMinesweeperPosition] = createSignal<WindowPosition>({ x: 50, y: 50 })
     const [dragging, setDragging] = createSignal<WindowType>(null)
     const [dragStart, setDragStart] = createSignal<{ x: number; y: number } | null>(null)
     const { t } = useLanguage()
@@ -133,6 +135,9 @@ const Hero: Component<HeroProps> = (props) => {
         } else if (dragging() === 'articles') {
             const current = articlesPosition()
             setArticlesPosition({ x: current.x + deltaX, y: current.y + deltaY })
+        } else if (dragging() === 'minesweeper') {
+            const current = minesweeperPosition()
+            setMinesweeperPosition({ x: current.x + deltaX, y: current.y + deltaY })
         }
 
         setDragStart({ x: e.clientX, y: e.clientY })
@@ -165,6 +170,10 @@ const Hero: Component<HeroProps> = (props) => {
                 <div class="desktop-icon" onClick={() => openWindowHandler('articles')} onDblClick={() => openWindowHandler('articles')}>
                     <div class="icon-image">📝</div>
                     <div class="icon-label">{t('articles')}</div>
+                </div>
+                <div class="desktop-icon" onClick={() => openWindowHandler('minesweeper')} onDblClick={() => openWindowHandler('minesweeper')}>
+                    <div class="icon-image">💣</div>
+                    <div class="icon-label">{t('minesweeper')}</div>
                 </div>
                 <div class="desktop-icon" onClick={() => window.open('https://github.com/sametakbal', '_blank')} onDblClick={() => window.open('https://github.com/sametakbal', '_blank')}>
                     <div class="icon-image">🌐</div>
@@ -290,6 +299,21 @@ const Hero: Component<HeroProps> = (props) => {
                                 )}
                             </For>
                         </div>
+                    </div>
+                </div>
+            </Show>
+            <Show when={props.openWindow() === 'minesweeper'}>
+                <div class="window minesweeper-window" style={{ position: 'absolute', left: `${minesweeperPosition().x}px`, top: `${minesweeperPosition().y}px` }}>
+                    <div class="window-titlebar" onMouseDown={(e) => startDrag('minesweeper', e)} style={{ cursor: 'move' }}>
+                        <span>{t('minesweeperTitle')}</span>
+                        <div class="titlebar-buttons">
+                            <button class="titlebar-button">_</button>
+                            <button class="titlebar-button">□</button>
+                            <button class="titlebar-button" onClick={closeWindow}>×</button>
+                        </div>
+                    </div>
+                    <div class="window-body">
+                        <Minesweeper />
                     </div>
                 </div>
             </Show>

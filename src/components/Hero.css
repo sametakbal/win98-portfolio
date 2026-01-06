@@ -82,6 +82,12 @@
     max-height: 400px;
 }
 
+.minesweeper-window {
+    max-width: fit-content;
+    margin: 20px;
+    z-index: 10;
+}
+
 .window-body h2 {
     margin-bottom: 12px;
     font-size: 14px;

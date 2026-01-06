@@ -35,6 +35,7 @@ const Footer: Component<FooterProps> = (props) => {
         if (win === 'about') return t('aboutTitle')
         if (win === 'projects') return t('projectsTitle')
         if (win === 'articles') return t('articlesTitle')
+        if (win === 'minesweeper') return t('minesweeperTitle')
         return null
     }
 
@@ -71,13 +72,19 @@ const Footer: Component<FooterProps> = (props) => {
                                 <div class="submenu">
                                     <div
                                         class={`menu-item ${language() === 'tr' ? 'active' : ''}`}
+                                        role="button"
+                                        tabIndex={0}
                                         onClick={() => handleLanguageChange('tr')}
+                                        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleLanguageChange('tr')}
                                     >
                                         🇹🇷 {t('turkish')}
                                     </div>
                                     <div
                                         class={`menu-item ${language() === 'en' ? 'active' : ''}`}
+                                        role="button"
+                                        tabIndex={0}
                                         onClick={() => handleLanguageChange('en')}
+                                        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleLanguageChange('en')}
                                     >
                                         🇬🇧 {t('english')}
                                     </div>
