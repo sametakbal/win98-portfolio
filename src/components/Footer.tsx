@@ -1,12 +1,12 @@
-import { createSignal, Show } from 'solid-js'
+import { createSignal, Show, For } from 'solid-js'
 import type { Component, Accessor, Setter } from 'solid-js'
 import type { WindowType } from '../App'
 import { useLanguage } from '../contexts/LanguageContext'
 import './Footer.css'
 
 interface FooterProps {
-    openWindow: Accessor<WindowType>
-    setOpenWindow: Setter<WindowType>
+    openWindows: Accessor<WindowType[]>
+    setOpenWindows: Setter<WindowType[]>
 }
 
 const Footer: Component<FooterProps> = (props) => {
@@ -30,14 +30,13 @@ const Footer: Component<FooterProps> = (props) => {
         document.addEventListener('click', handleClickOutside)
     }
 
-    const getWindowTitle = () => {
-        const win = props.openWindow()
+    const getWindowTitle = (win: WindowType) => {
         if (win === 'about') return t('aboutTitle')
         if (win === 'projects') return t('projectsTitle')
         if (win === 'articles') return t('articlesTitle')
         if (win === 'minesweeper') return t('minesweeperTitle')
         if (win === 'internet') return t('internetTitle')
-        return null
+        return ''
     }
 
     const toggleStartMenu = () => {
@@ -96,11 +95,13 @@ const Footer: Component<FooterProps> = (props) => {
                 </Show>
             </div>
             <div class="taskbar-items">
-                <Show when={props.openWindow()}>
-                    <div class="taskbar-item active">
-                        {getWindowTitle()}
-                    </div>
-                </Show>
+                <For each={props.openWindows()}>
+                    {(window) => (
+                        <div class="taskbar-item active">
+                            {getWindowTitle(window)}
+                        </div>
+                    )}
+                </For>
             </div>
             <div class="system-tray">
                 <span class="tray-icon">🔊</span>

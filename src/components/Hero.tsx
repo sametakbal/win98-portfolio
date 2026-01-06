@@ -8,8 +8,8 @@ import './Projects.css'
 import './Articles.css'
 
 interface HeroProps {
-    openWindow: Accessor<WindowType>
-    setOpenWindow: Setter<WindowType>
+    openWindows: Accessor<WindowType[]>
+    setOpenWindows: Setter<WindowType[]>
 }
 
 interface WindowPosition {
@@ -153,11 +153,19 @@ const Hero: Component<HeroProps> = (props) => {
     }
 
     const openWindowHandler = (window: WindowType) => {
-        props.setOpenWindow(window)
+        const windows = props.openWindows()
+        if (!windows.includes(window)) {
+            props.setOpenWindows([...windows, window])
+        }
     }
 
-    const closeWindow = () => {
-        props.setOpenWindow(null)
+    const closeWindow = (window: WindowType) => {
+        const windows = props.openWindows()
+        props.setOpenWindows(windows.filter(w => w !== window))
+    }
+
+    const isWindowOpen = (window: WindowType) => {
+        return props.openWindows().includes(window)
     }
 
     return (
@@ -184,14 +192,14 @@ const Hero: Component<HeroProps> = (props) => {
                     <div class="icon-label">{t('internet')}</div>
                 </div>
             </div>
-            <Show when={props.openWindow() === 'about'}>
+            <Show when={isWindowOpen('about')}>
                 <div class="window about-window" style={{ position: 'absolute', left: `${aboutPosition().x}px`, top: `${aboutPosition().y}px` }}>
                     <div class="window-titlebar" onMouseDown={(e) => startDrag('about', e)} style={{ cursor: 'move' }}>
                         <span>{t('aboutTitle')}</span>
                         <div class="titlebar-buttons">
                             <button class="titlebar-button">_</button>
                             <button class="titlebar-button">□</button>
-                            <button class="titlebar-button" onClick={closeWindow}>×</button>
+                            <button class="titlebar-button" onClick={() => closeWindow('about')}>×</button>
                         </div>
                     </div>
                     <div class="window-body">
@@ -231,14 +239,14 @@ const Hero: Component<HeroProps> = (props) => {
                     </div>
                 </div>
             </Show>
-            <Show when={props.openWindow() === 'projects'}>
+            <Show when={isWindowOpen('projects')}>
                 <div class="window projects-window" style={{ position: 'absolute', left: `${projectsPosition().x}px`, top: `${projectsPosition().y}px` }}>
                     <div class="window-titlebar" onMouseDown={(e) => startDrag('projects', e)} style={{ cursor: 'move' }}>
                         <span>{t('projectsTitle')}</span>
                         <div class="titlebar-buttons">
                             <button class="titlebar-button">_</button>
                             <button class="titlebar-button">□</button>
-                            <button class="titlebar-button" onClick={closeWindow}>×</button>
+                            <button class="titlebar-button" onClick={() => closeWindow('projects')}>×</button>
                         </div>
                     </div>
                     <div class="toolbar">
@@ -272,14 +280,14 @@ const Hero: Component<HeroProps> = (props) => {
                     </div>
                 </div>
             </Show>
-            <Show when={props.openWindow() === 'articles'}>
+            <Show when={isWindowOpen('articles')}>
                 <div class="window articles-window" style={{ position: 'absolute', left: `${articlesPosition().x}px`, top: `${articlesPosition().y}px` }}>
                     <div class="window-titlebar" onMouseDown={(e) => startDrag('articles', e)} style={{ cursor: 'move' }}>
                         <span>{t('articlesTitle')}</span>
                         <div class="titlebar-buttons">
                             <button class="titlebar-button">_</button>
                             <button class="titlebar-button">□</button>
-                            <button class="titlebar-button" onClick={closeWindow}>×</button>
+                            <button class="titlebar-button" onClick={() => closeWindow('articles')}>×</button>
                         </div>
                     </div>
                     <div class="window-body">
@@ -306,14 +314,14 @@ const Hero: Component<HeroProps> = (props) => {
                     </div>
                 </div>
             </Show>
-            <Show when={props.openWindow() === 'minesweeper'}>
+            <Show when={isWindowOpen('minesweeper')}>
                 <div class="window minesweeper-window" style={{ position: 'absolute', left: `${minesweeperPosition().x}px`, top: `${minesweeperPosition().y}px` }}>
                     <div class="window-titlebar" onMouseDown={(e) => startDrag('minesweeper', e)} style={{ cursor: 'move' }}>
                         <span>{t('minesweeperTitle')}</span>
                         <div class="titlebar-buttons">
                             <button class="titlebar-button">_</button>
                             <button class="titlebar-button">□</button>
-                            <button class="titlebar-button" onClick={closeWindow}>×</button>
+                            <button class="titlebar-button" onClick={() => closeWindow('minesweeper')}>×</button>
                         </div>
                     </div>
                     <div class="window-body">
@@ -321,14 +329,14 @@ const Hero: Component<HeroProps> = (props) => {
                     </div>
                 </div>
             </Show>
-            <Show when={props.openWindow() === 'internet'}>
+            <Show when={isWindowOpen('internet')}>
                 <div class="window internet-window" style={{ position: 'absolute', left: `${internetPosition().x}px`, top: `${internetPosition().y}px` }}>
                     <div class="window-titlebar" onMouseDown={(e) => startDrag('internet', e)} style={{ cursor: 'move' }}>
                         <span>{t('internetTitle')}</span>
                         <div class="titlebar-buttons">
                             <button class="titlebar-button">_</button>
                             <button class="titlebar-button">□</button>
-                            <button class="titlebar-button" onClick={closeWindow}>×</button>
+                            <button class="titlebar-button" onClick={() => closeWindow('internet')}>×</button>
                         </div>
                     </div>
                     <div class="ie-toolbar">

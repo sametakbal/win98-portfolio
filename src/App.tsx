@@ -5,16 +5,16 @@ import Footer from './components/Footer'
 import { LanguageProvider } from './contexts/LanguageContext'
 import './App.css'
 
-export type WindowType = 'about' | 'projects' | 'articles' | 'minesweeper' | 'internet' | null
+export type WindowType = 'about' | 'projects' | 'articles' | 'minesweeper' | 'internet'
 
 const App: Component = () => {
-  const [openWindow, setOpenWindow] = createSignal<WindowType>(null)
+  const [openWindows, setOpenWindows] = createSignal<WindowType[]>([])
 
   return (
     <LanguageProvider>
       <div class="app">
-        <Hero openWindow={openWindow} setOpenWindow={setOpenWindow} />
-        <Footer openWindow={openWindow} setOpenWindow={setOpenWindow} />
+        <Hero openWindows={openWindows} setOpenWindows={setOpenWindows} />
+        <Footer openWindows={openWindows} setOpenWindows={setOpenWindows} />
       </div>
     </LanguageProvider>
   )
