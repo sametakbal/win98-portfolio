@@ -40,6 +40,7 @@ const Hero: Component<HeroProps> = (props) => {
     const [projectsPosition, setProjectsPosition] = createSignal<WindowPosition>({ x: 20, y: 20 })
     const [articlesPosition, setArticlesPosition] = createSignal<WindowPosition>({ x: 20, y: 20 })
     const [minesweeperPosition, setMinesweeperPosition] = createSignal<WindowPosition>({ x: 50, y: 50 })
+    const [internetPosition, setInternetPosition] = createSignal<WindowPosition>({ x: 40, y: 40 })
     const [dragging, setDragging] = createSignal<WindowType>(null)
     const [dragStart, setDragStart] = createSignal<{ x: number; y: number } | null>(null)
     const { t } = useLanguage()
@@ -138,6 +139,9 @@ const Hero: Component<HeroProps> = (props) => {
         } else if (dragging() === 'minesweeper') {
             const current = minesweeperPosition()
             setMinesweeperPosition({ x: current.x + deltaX, y: current.y + deltaY })
+        } else if (dragging() === 'internet') {
+            const current = internetPosition()
+            setInternetPosition({ x: current.x + deltaX, y: current.y + deltaY })
         }
 
         setDragStart({ x: e.clientX, y: e.clientY })
@@ -175,9 +179,9 @@ const Hero: Component<HeroProps> = (props) => {
                     <div class="icon-image">💣</div>
                     <div class="icon-label">{t('minesweeper')}</div>
                 </div>
-                <div class="desktop-icon" onClick={() => window.open('https://github.com/sametakbal', '_blank')} onDblClick={() => window.open('https://github.com/sametakbal', '_blank')}>
+                <div class="desktop-icon" onClick={() => openWindowHandler('internet')} onDblClick={() => openWindowHandler('internet')}>
                     <div class="icon-image">🌐</div>
-                    <div class="icon-label">Internet</div>
+                    <div class="icon-label">{t('internet')}</div>
                 </div>
             </div>
             <Show when={props.openWindow() === 'about'}>
@@ -314,6 +318,43 @@ const Hero: Component<HeroProps> = (props) => {
                     </div>
                     <div class="window-body">
                         <Minesweeper />
+                    </div>
+                </div>
+            </Show>
+            <Show when={props.openWindow() === 'internet'}>
+                <div class="window internet-window" style={{ position: 'absolute', left: `${internetPosition().x}px`, top: `${internetPosition().y}px` }}>
+                    <div class="window-titlebar" onMouseDown={(e) => startDrag('internet', e)} style={{ cursor: 'move' }}>
+                        <span>{t('internetTitle')}</span>
+                        <div class="titlebar-buttons">
+                            <button class="titlebar-button">_</button>
+                            <button class="titlebar-button">□</button>
+                            <button class="titlebar-button" onClick={closeWindow}>×</button>
+                        </div>
+                    </div>
+                    <div class="ie-toolbar">
+                        <div class="ie-menu">
+                            <span>File</span>
+                            <span>Edit</span>
+                            <span>View</span>
+                            <span>Favorites</span>
+                            <span>Tools</span>
+                            <span>Help</span>
+                        </div>
+                        <div class="ie-address-bar">
+                            <span class="address-label">Address</span>
+                            <div class="address-input">
+                                <span>🌐</span>
+                                <span>https://web.archive.org/web/19990508044928/http://www2.google.com/</span>
+                            </div>
+                            <button class="go-button">Go</button>
+                        </div>
+                    </div>
+                    <div class="window-body ie-body">
+                        <iframe
+                            src="https://web.archive.org/web/19990508044928/http://www2.google.com/"
+                            class="ie-iframe"
+                            title="Internet Explorer"
+                        />
                     </div>
                 </div>
             </Show>

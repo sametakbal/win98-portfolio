@@ -88,6 +88,99 @@
     z-index: 10;
 }
 
+.internet-window {
+    width: 800px;
+    max-width: 90vw;
+    height: 600px;
+    max-height: 80vh;
+    margin: 20px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.ie-toolbar {
+    background: var(--win98-gray);
+    border-bottom: 1px solid var(--win98-dark-gray);
+    padding: 2px;
+}
+
+.ie-menu {
+    display: flex;
+    gap: 8px;
+    padding: 2px 4px;
+    font-size: 11px;
+    border-bottom: 1px solid var(--win98-dark-gray);
+    margin-bottom: 2px;
+}
+
+.ie-menu span {
+    padding: 2px 8px;
+    cursor: pointer;
+}
+
+.ie-menu span:hover {
+    background: var(--win98-highlight);
+    color: white;
+}
+
+.ie-address-bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+}
+
+.address-label {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.address-input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: white;
+    border: 1px solid;
+    border-color: var(--win98-dark-gray) var(--win98-white) var(--win98-white) var(--win98-dark-gray);
+    padding: 2px 4px;
+    font-size: 11px;
+}
+
+.address-input span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.go-button {
+    padding: 2px 12px;
+    border: 2px solid;
+    border-color: var(--win98-white) var(--win98-dark-gray) var(--win98-dark-gray) var(--win98-white);
+    background: var(--win98-gray);
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.go-button:active {
+    border-color: var(--win98-dark-gray) var(--win98-white) var(--win98-white) var(--win98-dark-gray);
+}
+
+.ie-body {
+    padding: 0;
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+.ie-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
 .window-body h2 {
     margin-bottom: 12px;
     font-size: 14px;

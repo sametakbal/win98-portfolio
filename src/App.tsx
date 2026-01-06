@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import { LanguageProvider } from './contexts/LanguageContext'
 import './App.css'
 
-export type WindowType = 'about' | 'projects' | 'articles' | 'minesweeper' | null
+export type WindowType = 'about' | 'projects' | 'articles' | 'minesweeper' | 'internet' | null
 
 const App: Component = () => {
   const [openWindow, setOpenWindow] = createSignal<WindowType>(null)

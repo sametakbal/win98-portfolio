@@ -18,6 +18,7 @@ const translations = {
         projects: 'Projeler',
         articles: 'Yazılar & Videolar',
         minesweeper: 'Mayın Tarlası',
+        internet: 'Internet',
         language: 'Dil',
         turkish: 'Türkçe',
         english: 'English',
@@ -25,6 +26,7 @@ const translations = {
         projectsTitle: '📁 Projelerim',
         articlesTitle: '📝 Yazılar & Videolar',
         minesweeperTitle: '💣 Mayın Tarlası',
+        internetTitle: '🌐 Google - Microsoft Internet Explorer',
     },
     en: {
         start: 'Start',
@@ -32,6 +34,7 @@ const translations = {
         projects: 'Projects',
         articles: 'Articles & Videos',
         minesweeper: 'Minesweeper',
+        internet: 'Internet',
         language: 'Language',
         turkish: 'Türkçe',
         english: 'English',
@@ -39,6 +42,7 @@ const translations = {
         projectsTitle: '📁 My Projects',
         articlesTitle: '📝 Articles & Videos',
         minesweeperTitle: '💣 Minesweeper',
+        internetTitle: '🌐 Google - Microsoft Internet Explorer',
     }
 }
 

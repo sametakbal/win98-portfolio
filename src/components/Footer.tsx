@@ -36,6 +36,7 @@ const Footer: Component<FooterProps> = (props) => {
         if (win === 'projects') return t('projectsTitle')
         if (win === 'articles') return t('articlesTitle')
         if (win === 'minesweeper') return t('minesweeperTitle')
+        if (win === 'internet') return t('internetTitle')
         return null
     }
 
