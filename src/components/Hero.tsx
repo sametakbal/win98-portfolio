@@ -41,7 +41,7 @@ const Hero: Component<HeroProps> = (props) => {
     const [articlesPosition, setArticlesPosition] = createSignal<WindowPosition>({ x: 20, y: 20 })
     const [minesweeperPosition, setMinesweeperPosition] = createSignal<WindowPosition>({ x: 50, y: 50 })
     const [internetPosition, setInternetPosition] = createSignal<WindowPosition>({ x: 40, y: 40 })
-    const [dragging, setDragging] = createSignal<WindowType>(null)
+    const [dragging, setDragging] = createSignal<WindowType | null>(null)
     const [dragStart, setDragStart] = createSignal<{ x: number; y: number } | null>(null)
     const { t } = useLanguage()
 
@@ -171,23 +171,63 @@ const Hero: Component<HeroProps> = (props) => {
     return (
         <section class="hero" onMouseMove={onDrag} onMouseUp={stopDrag} onMouseLeave={stopDrag}>
             <div class="hero-content">
-                <div class="desktop-icon" onClick={() => openWindowHandler('about')} onDblClick={() => openWindowHandler('about')}>
+                <div
+                    class="desktop-icon"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openWindowHandler('about')}
+                    onDblClick={() => openWindowHandler('about')}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openWindowHandler('about')}
+                    aria-label={t('about')}
+                >
                     <div class="icon-image">💻</div>
                     <div class="icon-label">{t('about')}</div>
                 </div>
-                <div class="desktop-icon" onClick={() => openWindowHandler('projects')} onDblClick={() => openWindowHandler('projects')}>
+                <div
+                    class="desktop-icon"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openWindowHandler('projects')}
+                    onDblClick={() => openWindowHandler('projects')}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openWindowHandler('projects')}
+                    aria-label={t('projects')}
+                >
                     <div class="icon-image">📁</div>
                     <div class="icon-label">{t('projects')}</div>
                 </div>
-                <div class="desktop-icon" onClick={() => openWindowHandler('articles')} onDblClick={() => openWindowHandler('articles')}>
+                <div
+                    class="desktop-icon"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openWindowHandler('articles')}
+                    onDblClick={() => openWindowHandler('articles')}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openWindowHandler('articles')}
+                    aria-label={t('articles')}
+                >
                     <div class="icon-image">📝</div>
                     <div class="icon-label">{t('articles')}</div>
                 </div>
-                <div class="desktop-icon" onClick={() => openWindowHandler('minesweeper')} onDblClick={() => openWindowHandler('minesweeper')}>
+                <div
+                    class="desktop-icon"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openWindowHandler('minesweeper')}
+                    onDblClick={() => openWindowHandler('minesweeper')}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openWindowHandler('minesweeper')}
+                    aria-label={t('minesweeper')}
+                >
                     <div class="icon-image">💣</div>
                     <div class="icon-label">{t('minesweeper')}</div>
                 </div>
-                <div class="desktop-icon" onClick={() => openWindowHandler('internet')} onDblClick={() => openWindowHandler('internet')}>
+                <div
+                    class="desktop-icon"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openWindowHandler('internet')}
+                    onDblClick={() => openWindowHandler('internet')}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openWindowHandler('internet')}
+                    aria-label={t('internet')}
+                >
                     <div class="icon-image">🌐</div>
                     <div class="icon-label">{t('internet')}</div>
                 </div>
