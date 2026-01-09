@@ -3,6 +3,7 @@ import type { Component, Accessor, Setter } from 'solid-js'
 import type { WindowType } from '../App'
 import { useLanguage } from '../contexts/LanguageContext'
 import Minesweeper from './Minesweeper'
+import Paint from './Paint'
 import './Hero.css'
 import './Projects.css'
 import './Articles.css'
@@ -41,6 +42,7 @@ const Hero: Component<HeroProps> = (props) => {
     const [articlesPosition, setArticlesPosition] = createSignal<WindowPosition>({ x: 20, y: 20 })
     const [minesweeperPosition, setMinesweeperPosition] = createSignal<WindowPosition>({ x: 50, y: 50 })
     const [internetPosition, setInternetPosition] = createSignal<WindowPosition>({ x: 40, y: 40 })
+    const [paintPosition, setPaintPosition] = createSignal<WindowPosition>({ x: 60, y: 60 })
     const [dragging, setDragging] = createSignal<WindowType | null>(null)
     const [dragStart, setDragStart] = createSignal<{ x: number; y: number } | null>(null)
     const { t } = useLanguage()
@@ -142,6 +144,9 @@ const Hero: Component<HeroProps> = (props) => {
         } else if (dragging() === 'internet') {
             const current = internetPosition()
             setInternetPosition({ x: current.x + deltaX, y: current.y + deltaY })
+        } else if (dragging() === 'paint') {
+            const current = paintPosition()
+            setPaintPosition({ x: current.x + deltaX, y: current.y + deltaY })
         }
 
         setDragStart({ x: e.clientX, y: e.clientY })
@@ -230,6 +235,18 @@ const Hero: Component<HeroProps> = (props) => {
                 >
                     <div class="icon-image">🌐</div>
                     <div class="icon-label">{t('internet')}</div>
+                </div>
+                <div
+                    class="desktop-icon"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openWindowHandler('paint')}
+                    onDblClick={() => openWindowHandler('paint')}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openWindowHandler('paint')}
+                    aria-label="Paint"
+                >
+                    <div class="icon-image">🎨</div>
+                    <div class="icon-label">Paint</div>
                 </div>
             </div>
             <Show when={isWindowOpen('about')}>
@@ -403,6 +420,21 @@ const Hero: Component<HeroProps> = (props) => {
                             class="ie-iframe"
                             title="Internet Explorer"
                         />
+                    </div>
+                </div>
+            </Show>
+            <Show when={isWindowOpen('paint')}>
+                <div class="window paint-window" style={{ position: 'absolute', left: `${paintPosition().x}px`, top: `${paintPosition().y}px`, width: 'auto', height: 'auto' }}>
+                    <div class="window-titlebar" onMouseDown={(e) => startDrag('paint', e)} style={{ cursor: 'move' }}>
+                        <span>untitled - Paint</span>
+                        <div class="titlebar-buttons">
+                            <button class="titlebar-button">_</button>
+                            <button class="titlebar-button">□</button>
+                            <button class="titlebar-button" onClick={() => closeWindow('paint')}>×</button>
+                        </div>
+                    </div>
+                    <div class="window-body" style={{ padding: 0 }}>
+                        <Paint />
                     </div>
                 </div>
             </Show>

@@ -36,6 +36,7 @@ const Footer: Component<FooterProps> = (props) => {
         if (win === 'articles') return t('articlesTitle')
         if (win === 'minesweeper') return t('minesweeperTitle')
         if (win === 'internet') return t('internetTitle')
+        if (win === 'paint') return 'Paint'
         return ''
     }
 
@@ -47,6 +48,17 @@ const Footer: Component<FooterProps> = (props) => {
         setLanguage(lang)
         setStartMenuOpen(false)
     }
+
+    const windowIcons: Record<WindowType, string> = {
+        about: '💻',
+        projects: '📁',
+        articles: '📝',
+        minesweeper: '💣',
+        internet: '🌐',
+        paint: '🎨'
+    }
+
+    const getWindowIcon = (win: WindowType) => windowIcons[win] || ''
 
     return (
         <footer class="footer">
@@ -98,7 +110,8 @@ const Footer: Component<FooterProps> = (props) => {
                 <For each={props.openWindows()}>
                     {(window) => (
                         <div class="taskbar-item active">
-                            {getWindowTitle(window)}
+                            <span>{getWindowIcon(window)}</span>
+                            <span>{getWindowTitle(window)}</span>
                         </div>
                     )}
                 </For>

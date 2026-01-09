@@ -1,0 +1,161 @@
+
+.paint-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #c0c0c0;
+    font-family: Arial, sans-serif;
+    user-select: none;
+}
+
+.paint-menu-bar {
+    display: flex;
+    gap: 12px;
+    padding: 2px 6px;
+    background-color: #c0c0c0;
+    border-bottom: 1px solid #808080;
+    font-size: 11px;
+}
+
+.paint-menu-item {
+    cursor: default;
+}
+
+.paint-menu-item:hover {
+    background-color: #000080;
+    color: white;
+}
+
+.paint-workspace {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    padding: 2px;
+}
+
+.paint-toolbar {
+    width: 50px;
+    background-color: #c0c0c0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 2px;
+    gap: 2px;
+    border-right: 1px solid #808080;
+    box-shadow: -1px -1px #fff;
+}
+
+.tool-button {
+    width: 22px;
+    height: 22px;
+    border: 1px solid #fff;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+    background-color: #c0c0c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.tool-button:active, .tool-button.active {
+    border: 1px solid #808080;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    background-color: #e0e0e0;
+}
+
+.tool-icon {
+    pointer-events: none;
+}
+
+.paint-canvas-area {
+    flex: 1;
+    background-color: #808080;
+    overflow: auto;
+    position: relative;
+    padding: 3px;
+}
+
+.paint-canvas {
+    background-color: white;
+    cursor: crosshair;
+    display: block;
+    box-shadow: 1px 1px 0 #000;
+}
+
+.paint-status-bar {
+    height: 20px;
+    background-color: #c0c0c0;
+    border-top: 1px solid #808080;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    font-size: 11px;
+    gap: 10px;
+}
+
+.paint-color-palette {
+    height: 46px;
+    background-color: #c0c0c0;
+    border-top: 1px solid #808080;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    gap: 10px;
+}
+
+.current-colors {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 1px solid #808080;
+    border-right-color: white;
+    border-bottom-color: white;
+    background: #c0c0c0;
+}
+
+.color-box {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    border: 1px solid #808080;
+}
+
+.background-color-box {
+    right: 3px;
+    bottom: 3px;
+    z-index: 1;
+}
+
+.foreground-color-box {
+    left: 3px;
+    top: 3px;
+    z-index: 2;
+}
+
+.palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 260px;
+    height: 32px;
+}
+
+.palette-color {
+    width: 13px;
+    height: 13px;
+    border: 1px solid #808080;
+    border-right-color: white;
+    border-bottom-color: white;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    cursor: pointer;
+}
+
+.palette-color:hover {
+    border: 1px solid white;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+}
